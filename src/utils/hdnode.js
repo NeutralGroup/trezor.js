@@ -120,7 +120,9 @@ export function getHDNode(
         const resXpub = resKey.message.xpub;
 
         return session._getPublicKeyInternal(childPath).then((childKey: MessageResponse<trezor.PublicKey>) => {
-            // const childNode = pubKey2bjsNode(childKey, network);
+            const childNode = pubKey2bjsNode(childKey, network);
+            return childNode;
+            /*
             const childXpub = childKey.message.xpub;
             return xpubDerive(resXpub, bitcoin.networks.bitcoin, suffix).then(actualChildXpub => {
                 if (actualChildXpub !== childXpub) {
@@ -131,6 +133,7 @@ export function getHDNode(
                 }
                 return resNode;
             });
+            */
         });
     });
 }
